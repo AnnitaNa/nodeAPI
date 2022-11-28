@@ -1,14 +1,13 @@
-import express from "express";
-import dotenv from "dotenv"
-
-dotenv.config();
-
-const app = express();
+import http from "node:http";
 
 const PORT = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
+const server = http.createServer((req, res) => {
     res.end("hello world")
 })
 
-app.listen(PORT, () => {console.log(`connect to ${PORT}...`)})
+server.listen(PORT, () => {
+    console.log(`connect to ${PORT}...`)
+})
+
+export {server}
