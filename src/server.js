@@ -1,10 +1,10 @@
-import http from "node:http";
-import { handler } from "./handler.js";
+import express from "express";
+import { appRouter } from "./routes/appRoute.js";
 
+const app = express();
 const PORT = process.env.PORT || 3000;
 
-const server = http.createServer(handler).listen(PORT, () => {
+app.use("/", appRouter).listen(PORT, () => {
     console.log(`connect to ${PORT}...`)
 })
 
-export {server}
